@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- You can add your styles and scripts here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/global.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/mobile.css" />
+</head>
+<body>
+    <!-- This is an example app structure, you can modify this as much as you choose --> 
+    <header>
+        <div class="centered logo" id="intro-header">lurkforwork.com</div>
+        <nav class="hidden navbar navbar-expand-lg sticky-top bg-body-tertiary" id="nav-bar">
+            <div class="container-fluid">
+                <h2 class="mb-0 main-title">lurkforwork.com</h2>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- <li class="nav-item">
+                            Home feed button
+                            <a href="" class="nav-link" role="button">
+                                Job Feed
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <!-- New Job button -->
+                            <a href="" id="new-job-btn" class="nav-link" data-bs-toggle="modal" data-bs-target="#newJobModal" role="button">
+                                Post a New Job!
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown" data-bs-theme="light">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Profile
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="centered"><input type="button" value="View my profile" id="my-profile" class="btn btn-link nav-link red"></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="centered"><input type="button" value="Log Out" class="btn btn-link nav-link nav-head" id="logout-btn"></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" id="user-search-bar" role="search">
+                      <input class="form-control me-2" type="search" id="user-searched"placeholder="Enter user email" aria-label="Search">
+                      <button class="btn btn-outline-success" id="search-for-user-button" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <!-- app goes here --> 
+        
+        <div id="popup" class="hidden">
+            <div class="alert alert-danger" role="alert">
+                <button id="close-popup"  class="btn-close" aria-label="Close"></button>
+                <div id="popup-info"></div>
+            </div>
+        </div>
+
+        <div id="general-login">
+            <div id="login-container" class="registration">
+                <form class="shadow p-3 mb-5 bg-white rounded" id="login-form" name="login-form">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="login-email" name="login-email" class="form-control" placeholder="name@example.com">
+                        <label for="login-email">Email Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" id="login-password" name="login-password" class="form-control" placeholder="Password">
+                        <label for="login-password">Password</label>
+                    </div>
+                    <div class="centered">
+                        <input type="button" value="Log In" class="btn btn-primary" id="login-btn">
+                    </div>
+                </form>
+                <div class="centered">
+                    New to LurkForWork? <input type="button" value="Sign Up" id="go-to-sign-up" class="btn btn-secondary">
+                </div>
+            </div>
+
+            <div id="sign-up-container" class="hidden registration">
+                <form class="shadow p-3 mb-5 bg-white rounded" id="sign-up-form" name="sign-up-form">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="register-email" name="register-email" class="form-control" placeholder="name@example.com">
+                        <label for="register-email">Email Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" id="register-name" name="register-name" class="form-control" placeholder="John Smith">
+                        <label for="register-name">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" id="register-pw1" name="register-pw1" class="form-control" placeholder="password">
+                        <label for="register-pw1">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" id="register-pw2" name="register-pw2" class="form-control" placeholder="password">
+                        <label for="register-pw1">Confirm password</label>
+                    </div>
+                    <div class="centered">
+                        <input type="button" value="Sign Up" class="btn btn-primary" id="sign-up-btn">
+                    </div>
+                </form>
+                <div class="centered">
+                    Already have an account? <input type="button" value="Log In" id="go-to-login" class="btn btn-secondary">
+                </div>
+            </div>
+            <div id="error" class="hidden popup">
+                <div id="error-msg">Some Error message</div>
+                <input type="button" value="Close">
+            </div>
+        </div>
+
+        <div id="feed-screen" class="hidden">
+            <br>
+            <div class="centered your-jobs white-box"> Your Jobs </div>
+            <div id="job-feed">
+            </div>
+            <div class="centered hidden" id="no-more-jobs">
+                <p>No more jobs to be shown :(</p>
+                <p>Watch more people to see more jobs!</p>
+            </div>
+        </div>
+
+        <div id="profile-page" class="profile-page-container hidden">
+            <div id="user-info" class="user-info-container shadow bg-white">
+              <a id="profile-to-feed-link" class="profile-to-feed-link clickable">Return to job feed</a>
+              <div id="profile-container" class="profile-container flex-row">
+                <div id="dp" class="dp-container">
+                    <img id="dp-img" src="/default-dp.png" class="dp-img rounded-circle" />
+                </div>
+                <div id="user-details" class="user-details-container flex-column">
+                  <div id="user-name" class="user-name"></div>
+                  <div id="user-email" class="user-email"></div>
+                  <div id="watched-by-count" class="watched-by-count"></div>
+                  <div id="profile-page-btns" class="profile-page-btns">
+                    <button id="watch-btn" class="watch-btn profile-btn clickable hidden"></button>
+                    <button id="update-btn" class="update-btn profile-btn clickable hidden">Update Profile</button>
+                  </div>
+                  <br/>
+                  <div>
+                    <button id="dark-mode-btn" class="update-btn profile-btn clickable hidden">Dark Mode</button>
+                  </div>
+                </div>
+              </div>
+              <div id="posts-watched-by-container" class="posts-watched-by-container flex-column">
+                <div class="user-watched-by-container">
+                  <div class="user-watched-by-label">User Watched By:</div>
+                  <div id="user-watched-by" class="user-watched-by"></div>
+                </div>
+                <br/>
+                <div class="user-posts-container">
+                    <h1 class="user-posts-label centered">User Posts</h1>
+                    <div id="user-posts" class="user-posts"></div>
+                    <br/>
+                    <div class="centered hidden" id="no-posts">
+                        <p>This user has no job posts :(</p>
+                        <p>Check again soon!</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+          
+        <div>
+            <form id="update-user-profile-form" class = "hidden">
+                <table>
+                    <tr>
+                        <th>Email Address</th>
+                        <td><input type="text" id="new-email-address"></td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td><input type="text" id="new-password"></td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td><input type="text" id="new-name"></td>
+                    </tr>
+                    <tr>
+                        <th>Profile Picture</th>
+                        <td><input type="file" id="new-dp"></td>
+                    </tr>
+                </table>
+                <button id="save-updates" >Save</button>
+                <br/>
+                <button id="cancel-updates">Cancel</button>
+            </form>
+        </div>
+
+        
+
+        <div class="hidden job shadow p-3 mb-5 bg-body-tertiary rounded" id="job-template">
+            <div class="job-details justify-content-around d-flex flex-row-reverse align-items-center">
+                <div class="p-2">
+                    <img class="job-image" src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*" alt="Cute Dog image">
+                </div>
+                <div class="job-description-container flex-grow-1 d-flex flex-column justify-content-between" >
+                    <div class="job-title fw-bold">Full Stack Engineer</div>
+                    <div class="job-author"> David Beckham - dbeck@hotmail.com - 2 hours and 5 minutes ago</div>
+                    <div class="small-txt fst-italic"></div>
+                    <div class="job-start"> Starting on 2023-12-06 </div>
+                    <div class="job-description-header fw-semibold"> About the job </div>
+                </div>
+            </div>
+            <div>
+                <div class="job-description lh-sm"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate </div>
+                <div class="d-flex justify-content-between">
+                    <div class="job-likes"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg> 
+                        <span class="num-likes" role="button">1 like</span>
+                        <div class="liked-list hidden">
+                        </div>
+                    </div>
+                    <div class="job-comments">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-fill" viewBox="0 0 16 16">
+                            <path d="M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        </svg>
+                        <span class="num-comments" role="button">2 comments</span>
+                        <div class="no-comments hidden">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row flex-wrap">
+                <div class="like-button p-2">
+                    <input type="button" class="btn btn-outline-danger" data-bs-toggle="button" value="Like">
+                </div>
+                <div class="post-comment p-2 flex-grow-1">
+                    <input class="form-control form-control-sm p-2" type="text" placeholder="Write a comment...">
+                </div>
+                <div class="p-2">
+                    <input class="btn btn-primary" type="button" value="Post" disabled>
+                </div>
+                <div class="p-2 hidden">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-job-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="p-2 hidden">
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-job">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="hidden comment-list">
+            </div>
+        </div>
+
+        <div class="hidden comment p-3 mb-3 bg-body-tertiary rounded" id="comment-template">
+            <div class="comment-name fw-bold"> Anthony Edwards </div>
+            <div class="comment-email fw-lighter"> antman@gmail.com </div>
+            <div class="comment-body fst-normal"> I just dunked on you. </div>
+        </div>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="newJobModal" tabindex="-1" aria-labelledby="newJobLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="newJobLabel">Post a new job</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="new-job-form">
+                        <div class="mb-3">
+                            <label class="form-label" for="new-job-title">Job Title</label>
+                            <input type="text" id="new-job-title" name="new-job-title" class="form-control">
+                            <div id="new-job-title-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="new-job-start">Starting Date</label>
+                            <input type="datetime-local" name="new-job-start" id="new-job-start" class="form-control">
+                            <div id="new-job-start-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="new-job-desc">Job Description</label>
+                            <textarea class="form-control" id="new-job-desc" style="height: 150px"></textarea>
+                            <div id="new-job-desc-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="new-job-img">Job Image</label>
+                            <input type="file" id="new-job-img" name="new-job-img" accept="image/*" class="form-control">
+                            <div id="new-job-img-feedback"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="post-job-btn" disabled>Post</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Edit Post Modal -->
+        <div class="modal fade" id="edit-job-modal" tabindex="-1" aria-labelledby="edit-job-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="edit-job-modal-label">Edit a job post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-job-form">
+                        <div class="mb-3">
+                            <label class="form-label" for="edit-job-title">Job Title</label>
+                            <input type="text" id="edit-job-title" name="edit-job-title" class="form-control is-valid">
+                            <div class="valid-feedback" id="edit-job-title-feedback">Looks good</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="edit-job-start">Starting Date</label>
+                            <input type="datetime-local" name="edit-job-start" id="edit-job-start" class="form-control is-valid">
+                            <div class="valid-feedback" id="edit-job-start-feedback">Looks good</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="edit-job-desc">Job Description</label>
+                            <textarea class="form-control is-valid" id="edit-job-desc" style="height: 150px"></textarea>
+                            <div class="valid-feedback" id="edit-job-desc-feedback">Looks good</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="edit-job-img">Job Image</label>
+                            <span class="small-txt">(If no image is uploaded, the old image will be used)</span>
+                            <input type="file" id="edit-job-img" name="edit-job-img" accept="image/*" class="form-control is-valid">
+                            <div class="valid-feedback" id="edit-job-img-feedback">Looks good</div>
+                        </div>
+                        <img src="" alt="hidden job image for current job" class="hidden" id="edit-job-img-original">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirm-job-edit" disabled>Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <!-- Delete job -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete-job">
+        Delete post
+    </button> -->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="delete-job" tabindex="-1" aria-labelledby="delete-job-label" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="delete-job-label">Delete this job for ____</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" data-bs-dismiss="modal" class="btn btn-danger" id="confirm-job-delete">Delete</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="user-comment-hyperlink" class="inline comment-link hidden"> e@email.com </div>
+    </main>
+    <footer>
+        <p class="centered">&copy; lurkforwork.com 2022</p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>

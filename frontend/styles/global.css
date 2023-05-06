@@ -1,0 +1,395 @@
+:root {
+    --bg-color-dark: #333; 
+}
+
+/* base styles, feel free to edit */
+html, body {
+    padding: 0;
+    height: 100%;
+    font-family: Arial;
+
+}
+
+.dark-mode {
+    background-color: var(--bg-color-dark);
+}
+
+.clickable {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+  
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2.1. Milestone 1 - Registration & Login */
+.hidden {
+    display: none !important;
+}
+#close-popup {
+    cursor: pointer;
+}
+#popup {
+    text-align: center;
+    margin: auto;
+    border-radius: 15px;
+    background-color: rgb(230, 230, 230);
+}
+.registration {
+    margin: auto;
+    width: 400px;
+    padding: 35px;
+}
+form {
+    padding: 20px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* 2.2. Milestone 2 - Basic Feed */
+.job {
+    margin: auto;
+    width: 700px;
+}
+
+.job-details {
+    margin-bottom: 7px;
+}
+
+.job-image {
+    width: 150px;
+    height: auto;
+    padding-top: 5px;
+}
+
+.job-title {
+    font-size: 22pt;
+    padding-bottom: 5px;
+}
+
+.job-author {
+    font-size: 11pt;
+    padding: 5px 0px;
+}
+
+.job-description-header {
+    font-size: 16pt;
+    padding: 5px 0px;
+}
+.job-description-container {
+    padding: 5px 5px 0px 5px;
+}
+
+.job-start {
+    font-size: 11pt;
+    padding: 5px 0px;
+}
+
+.job-description {
+    margin-bottom: 10px;
+    padding: 0px 5px;
+}
+
+.job-comments {
+    color: #2185de;
+    text-align: right;
+}
+
+.job-likes {
+    color: #ff002e;
+}
+
+.num-likes:hover , .num-comments:hover {
+    text-decoration:underline;
+}
+
+.liked-list, .no-comments {
+    font-size: 10pt;
+    color: black;
+}
+
+.comment-list {
+    margin-top: 10px;
+}
+
+.comment {
+    background-color: #F2F2F2 !important;
+}
+
+.comment-name {
+    font-size: 14pt;
+}
+
+.comment-name:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.comment-email {
+    font-size: 10pt;
+    color: grey;
+    margin-top: -3px;
+    margin-bottom: 5px;
+}
+
+.comment-body {
+    font-size: 11pt;
+}
+
+
+/* 2.4. Milestone 4 - Other users & profiles */
+
+  
+#user-info-container {
+    align-items: center;
+    width: 100%;
+}
+  
+#user-info {
+    width: 70%;
+}
+  
+#dp {
+    text-align: center;
+    width: 30%;
+    height: fit-content;
+}
+  
+#dp-img {
+    width: 100px;
+    height: 100px;
+    padding-top: 5px;
+    object-fit: cover;
+}
+
+.small-txt {
+    font-size: 9pt;
+    color: grey;
+}
+
+.nav-head {
+    margin-left: 5px;
+}
+
+.main-title {
+    padding-right: 50px;
+    padding-left: 10px;
+}
+
+#no-more-jobs {
+    font-style: italic;
+    font-size: 20px;
+    padding: 25px;
+}
+
+.your-jobs {
+    font-size: 22pt;
+}
+
+.logo {
+    font-size: 24pt;
+    padding: 10px;
+}
+
+#nav-bar {
+    width: 100%;
+}
+.profile-page-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+  
+.user-info-container {
+border-radius: 5px;
+box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+padding: 20px;
+width: 100%;
+max-width: 800px;
+}
+
+.user-info-container a {
+color: #4267B2;
+text-decoration: none;
+font-size: 14px;
+margin-bottom: 10px;
+}
+
+.dp-container {
+width: 150px;
+height: 150px;
+overflow: hidden;
+margin-right: 30px;
+}
+
+.dp-img {
+width: 100%;
+height: auto;
+}
+
+.user-details-container {
+flex-grow: 1;
+}
+
+.user-name {
+font-size: 24px;
+font-weight: 600;
+margin-bottom: 10px;
+}
+
+.user-email {
+font-size: 14px;
+color: #666666;
+margin-bottom: 10px;
+}
+
+.watched-by-count {
+font-size: 14px;
+margin-bottom: 10px;
+}
+
+.profile-page-btns {
+display: flex;
+}
+
+.profile-btn {
+border: none;
+}
+
+#update-user-profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#update-user-profile-form table {
+margin-bottom: 1rem;
+}
+
+#update-user-profile-form th {
+text-align: left;
+padding-right: 1rem;
+}
+
+#update-user-profile-form td {
+padding-bottom: 1rem;
+}
+
+#update-user-profile-form input[type=text], #update-user-profile-form input[type=file] {
+padding: 0.5rem;
+margin: 0.5rem 0;
+border-radius: 3px;
+border: 1px solid #ccc;
+width: 100%;
+box-sizing: border-box;
+}
+
+#update-user-profile-form button {
+background-color: #4267B2;
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 5px;
+border: none;
+margin-right: 0.5rem;
+cursor: pointer;
+}
+
+#update-user-profile-form button:hover {
+background-color: #385898;
+}
+
+#update-user-profile-form #cancel-updates:active {
+    background-color: #999;
+}
+
+#update-user-profile-form #cancel-updates:hover {
+    background-color: #bbb;
+}
+    
+#update-user-profile-form button:active {
+background-color: #29487d;
+}
+
+#update-user-profile-form #cancel-updates {
+background-color: #ccc;
+color: #333;
+}
+
+
+
+.user-watched-by-container {
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.user-watched-by-label {
+font-weight: 600;
+font-size: 14px;
+margin-bottom: 10px;
+color: #262626;
+}
+
+.user-watched-by {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.user-watched-by-item {
+display: flex;
+align-items: center;
+padding: 8px;
+border-radius: 5px;
+background-color: #fafafa;
+}
+
+.user-watched-by-username {
+font-size: 14px;
+color: #262626;
+font-weight: 600;
+margin-left: 10px;
+}
+
+.white-box {
+    background-color: #fff;
+    padding: 10px;
+    border: 10px solid #ccc;
+}
+.inline {
+    display: inline-block;
+    padding: 1px;
+}
+
+.comment-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+.job-author:hover {
+    cursor: pointer;
+    text-decoration:underline;
+}

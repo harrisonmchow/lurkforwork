@@ -1,0 +1,113 @@
+@media (max-width: 400px) {
+    .registration {
+        margin: auto;
+        width: 300px;
+        padding: 15px;
+        font-size: 8pt;
+    }
+
+    #general-login {
+        margin: 0;
+        padding: 0;
+    }
+
+    input[type="text"] {
+        font-size: 8pt;
+        line-height: 9px;
+    }
+
+    input::placeholder {
+        font-size: 8pt;
+    }
+
+    .job {
+        width: 315px;
+        font-size: 8pt;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .job-image {
+        width: 85px;
+        padding-top: 2px;
+    }
+
+    .job-title {
+        font-size: 16pt;
+        padding-bottom: 2px;
+    }
+
+    .job-author {
+        font-size: 8pt;
+        padding: 2px 0px;
+    }
+
+    .job-description-header {
+        font-size: 12pt;
+        padding: 2px 0px;
+    }
+
+    .job-description-container {
+        padding: 2px 2px 0px 2px;
+    }
+
+    .job-start {
+        font-size: 8pt;
+    }
+
+    .job-description {
+        margin-bottom: 5px;
+    }
+
+    .liked-list, .no-comments {
+        font-size: 7pt;
+        color: black;
+    }
+
+    .comment-list {
+        margin-top: 5px;
+    }
+    .comment-email {
+        font-size: 8pt;
+        color: grey;
+        margin-top: -2px;
+        margin-bottom: 3px;
+    }
+    .comment-name {
+        font-size: 10pt;
+    }
+
+    .comment-body {
+        font-size: 8pt;
+    }
+
+    .small-txt {
+        font-size: 6pt;
+        color: grey;
+    }
+    .main-title {
+        padding-right: 15px;
+        padding-left: 5px;
+    }
+    #no-more-jobs {
+        font-style: italic;
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    .your-jobs {
+        font-size: 15pt;
+    }
+
+    .btn {
+        font-size: 8pt !important;
+    }
+
+    .logo {
+        font-size: 18pt;
+        padding: 5px;
+    }
+
+}
